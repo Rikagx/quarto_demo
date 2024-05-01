@@ -1,0 +1,51 @@
+---
+title: "Intro to Quarto!"
+author: "Rika"
+format: 
+  html: default
+editor: visual
+---
+
+# Introduction
+
+## Data
+
+
+```{r}
+library(tidyverse)
+library(ggthemes)
+library(palmerpenguins)
+library(gt)
+```
+
+## Species
+
+
+```{r}
+
+ggplot(
+  penguins,
+  aes(
+    x = bill_length_mm, y = bill_depth_mm,
+    color = species, shape = species
+  )
+) +
+  geom_point() +
+  theme_minimal() +
+  scale_color_colorblind() +
+  labs(x = "Bill length (mm)", y = "Bill depth (mm)")
+```
+
+## Penguins
+
+
+```{r}
+
+penguins |>
+  slice_head(n = 10) |>
+  select(species, island, bill_length_mm, bill_depth_mm) |>
+  gt()
+```
+
+# Analysis
+
